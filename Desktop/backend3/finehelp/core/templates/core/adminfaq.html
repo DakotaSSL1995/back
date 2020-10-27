@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+    <body>
+      <div>
+        {% load static %}
+        
+        <link href="{% static 'core/css/estilo2.css' %}" rel="stylesheet" type="text/css"/>
+      </div>
+      
+      {% block javascript %}
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+      <script src="{% static 'core/js/confirmacion.js' %}"></script>
+      {% endblock %} 
+      
+      <a href="{% url 'faq_nueva' %}">Agregar</a>
+      {% for p in preguntas %}
+
+        
+        <a href="{% url 'faq_modificar' p.id %}">Modificar</a>
+        <a href="#" onclick="confirmacionEliminacion({{p.id}})">Eliminar</a>
+        <button class="accordion">{{ p.titulo_pregunta }}</button>
+        <div class="panel">
+         <p>{{ p.contenido_pregunta }}</p>
+         
+</div>
+{% endfor %}
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+}
+</script>
+    </body>
+    </html>
+    

@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+
+    {% load static %}
+    {% block javascript %}
+    <script src="{% static 'core/js/confirmacion.js' %}"></script>
+    {% endblock %} 
+
+    <h2>    Nueva Pregunta</h2>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+
+            {{ form.as_table }}
+
+        </table>
+
+        <input type="reset" value="Limpiar">
+        <input type="submit" value="Guardar">
+        <button onclick="Salida()">Salir</button>
+        
+        
+       
+
+    </form>
+
+    {{ mensaje }}
+    
+
+</html>

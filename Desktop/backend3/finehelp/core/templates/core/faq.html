@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  
+    <body>
+      <div>
+        {% load static %}
+    <link href="{% static 'core/css/estilo2.css' %}" rel="stylesheet" type="text/css"/>
+      </div>
+      
+      {% for p in preguntas %}
+
+        
+        <button class="accordion">{{ p.titulo_pregunta }}</button>
+        <div class="panel">
+         <p>{{ p.contenido_pregunta }}</p>
+         
+</div>
+{% endfor %}
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+}
+</script>
+    </body>
+    </html>
+    
